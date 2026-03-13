@@ -153,15 +153,23 @@ Strategy: EMA 9-15 Pullback
 
 def main():
 
+    print("Bot started...")
+
     df = get_data()
 
     if df is None:
+        print("No data received")
         return
+
+    print("Data received")
 
     df = calculate_indicators(df)
 
+    last = df.iloc[-2]
+
+    print("Last candle:")
+    print(last)
+
     check_signal(df)
 
-
-if __name__ == "__main__":
-    main()
+    print("Run finished")
